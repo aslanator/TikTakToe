@@ -1,5 +1,5 @@
 import React from 'react';
-import Field from './Game/Field/Field';
+import Field from './Game/Field';
 import './Game.scss';
 
 function Game() {

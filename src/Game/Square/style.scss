@@ -1,0 +1,14 @@
+.square{
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  background: deepskyblue;
+  box-shadow: 0 0 0 3px rgba(40, 40, 40, 0.5) inset;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.square:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 220, 220, 0.7) inset;
+}
