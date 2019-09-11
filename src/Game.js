@@ -4,7 +4,7 @@ import './Game.scss';
 
 function Game() {
   return (
-    <div className="Game">
+    <div className="Game" >
       <Field/>
     </div>
   );

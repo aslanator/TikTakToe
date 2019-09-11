@@ -1,26 +1,31 @@
 import React from 'react';
 import Row from '../Row';
-import fieldData from './data.js';
+
 
 import './style.scss';
 
-class Field extends React.Component {
+export default  class Field extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            squares: fieldData
+            squares: [[null, null, null],
+                [null, null, null],
+                [null, null, null]],
+            xIsNext: true,
         }
     }
 
     handleClick(x, y) {
-        if(typeof y === 'undefined' || typeof x === 'undefined')
+        let squares = this.state.squares.slice();
+        if(typeof y === 'undefined' ||
+            typeof x === 'undefined' ||
+        squares[x][y] !== null)
             return false;
-        let squares = this.state.squares;
-        squares[x][y] = 'X';
-
+        squares[x][y] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
-            squares: squares
+            squares: squares,
+            xIsNext: !this.state.xIsNext
         });
     }
 
@@ -30,11 +35,9 @@ class Field extends React.Component {
 
           <div className="field">
               {this.state.squares.map((squares, key) => {
-                 return (<Row className="Row" squares={squares} key={key} x={key} handleClick={this.handleClick.bind(this)} />);
+                 return (<Row className="Row" squares={squares} key={key} x={key} />);
               })}
           </div>
         )
     }
 }
-
-export default Field;
