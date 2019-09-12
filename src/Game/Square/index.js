@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
+import { bindActionCreators } from 'redux'
 import './style.scss';
 
 
@@ -16,24 +17,16 @@ class Square extends React.Component {
 }
 
 
-const mapStateToProps = (state) => ({
-    squares: [],
-    xIsNext: true,
-});
-
-const mapDispatchToProps = {
-    test: (x) => (
-        {
-            type: "TEST",
-            payload: {
-                x: x,
-                y: '0'
-            }
-        }
-    )
-};
+const mapDispatchToProps = dispatch => {
+    return {
+        // dispatching plain actions
+        test: () => dispatch({ type: 'TEST' }),
+        decrement: () => dispatch({ type: 'DECREMENT' }),
+        reset: () => dispatch({ type: 'RESET' })
+    }
+}
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
 )(Square)

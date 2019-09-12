@@ -5,9 +5,12 @@ import Game from './Game';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './Game/Reducer';
+import reducer from './reducer';
+import {getInitialState} from "./actions";
 
 const store = createStore(reducer);
+
+store.dispatch(getInitialState());
 
 ReactDOM.render(
     <Provider store={store}>
