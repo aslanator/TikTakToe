@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import { bindActionCreators } from 'redux'
+import {check} from '../../actions';
 import './style.scss';
 
 
@@ -8,7 +8,7 @@ class Square extends React.Component {
 
     render() {
         return (
-            <button className="square" onClick={this.props.test.bind(null, 5)} >
+            <button className="square" onClick={this.props.check.bind(null, this.props.x, this.props.y)} >
                 {this.props.value}
             </button>
         )
@@ -19,10 +19,10 @@ class Square extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // dispatching plain actions
         test: () => dispatch({ type: 'TEST' }),
-        decrement: () => dispatch({ type: 'DECREMENT' }),
-        reset: () => dispatch({ type: 'RESET' })
+        check: (x, y) => {
+            dispatch(check(x, y));
+        }
     }
 }
 

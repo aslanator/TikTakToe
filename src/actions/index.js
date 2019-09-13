@@ -6,3 +6,9 @@ export const getInitialState = () => ({
         [null, null, null]
     ],
 });
+
+export const check = (x, y) => ({
+    type: "CHECK",
+    x: x,
+    y: y
+});
