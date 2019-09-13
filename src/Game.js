@@ -1,13 +1,21 @@
 import React from 'react';
 import Field from './Game/Field';
+import {connect} from 'react-redux';
 import './Game.scss';
 
-function Game() {
-  return (
+
+function Game({nextSymbol}) {
+    const status = `Next player: ${nextSymbol}`;
+    return (
     <div className="Game" >
-      <Field/>
+        <p>{status}</p>
+        <Field/>
     </div>
-  );
+    );
 }
 
-export default Game;
+const mapStateToProps = (state)=> ({
+    nextSymbol: state.nextIsX ? 'X' : 'O'
+});
+
+export default connect(mapStateToProps)(Game);
