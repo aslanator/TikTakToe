@@ -1,7 +1,6 @@
 import React from 'react';
 import Square from "../Square";
 import './style.scss';
-import {connect} from "react-redux";
 
 export default class Row extends React.Component {
     render() {

@@ -1,3 +1,6 @@
+import undoable from 'redux-undo';
+import {getInitialState} from "../actions";
+
 const calculateWinner = (squares) => {
     const lines = [
         [[0, 0], [0, 1], [0, 2]],
@@ -26,8 +29,7 @@ const initial = function(action, state) {
 
 const checkSquare = function(action, state){
     let winner;
-    state = {...state};
-    state.squares = [...state.squares];
+    state = JSON.parse(JSON.stringify(state));
     state.squares[action.x][action.y] = state.nextIsX ? 'X' : 'O';
     state.nextIsX = !state.nextIsX;
     if(null !== (winner = calculateWinner(state.squares))){
@@ -36,7 +38,7 @@ const checkSquare = function(action, state){
     return state;
 };
 
-export default (state = {}, action) => {
+const reducer = (state = {}, action) => {
     switch (action.type) {
         case 'INITIAL_STATE':
             return initial(action, state);
@@ -45,4 +47,8 @@ export default (state = {}, action) => {
         default:
             return state
     }
-}
+};
+
+const undoableReducer = undoable(reducer, {debug: true});
+
+export default undoableReducer;
