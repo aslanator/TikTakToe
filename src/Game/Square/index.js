@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(check(x, y));
         }
     }
-}
+};
 
 export default connect(
     null,

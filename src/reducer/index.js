@@ -1,5 +1,4 @@
 import undoable from 'redux-undo';
-import {getInitialState} from "../actions";
 
 const calculateWinner = (squares) => {
     const lines = [
@@ -19,7 +18,7 @@ const calculateWinner = (squares) => {
         }
     }
     return null;
-}
+};
 
 const initial = function(action, state) {
     state.squares = action.squares;
